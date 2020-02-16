@@ -6,6 +6,9 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  final namecontroller = TextEditingController();
+  final descriptioncontroller = TextEditingController();
+  final datecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +21,25 @@ class _AddPageState extends State<AddPage> {
             decoration: InputDecoration(
               hintText: "Enter item name"
             ),
+            controller: namecontroller,
           ),
           TextField(
             decoration: InputDecoration(
               hintText: "Enter item description"
             ),
+            controller: descriptioncontroller,
           ),
           TextField(
             keyboardType: TextInputType.datetime,
             decoration: InputDecoration(
               hintText: "Enter item date"
             ),
+            controller: datecontroller,
           ),
           FlatButton(
             onPressed: (){
               //Navigator.pop(context);
+              print(" Name ${namecontroller.text} Description ${descriptioncontroller.text} Date ${datecontroller.text}");
             }, 
             child: Text("Save")
           )
