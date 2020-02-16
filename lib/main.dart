@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/add.dart';
 import 'package:todo_app/detail.dart';
+import 'package:todo_app/model/todo.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Todo> items = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
