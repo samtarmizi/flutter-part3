@@ -43,8 +43,11 @@ class _HomePageState extends State<HomePage> {
       
         _generateListView() {
           return ListView.builder(itemBuilder: (BuildContext contex, int index){
-            return Container(
-              child: Text("Hello Wrold")
+            return Card(
+              child: ListTile(
+                title: Text("Hello World"),
+                trailing: Icon(Icons.arrow_forward_ios),
+              )
             ); 
           },
           itemCount: 3,
