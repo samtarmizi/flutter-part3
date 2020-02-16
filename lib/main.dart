@@ -28,6 +28,11 @@ class _HomePageState extends State<HomePage> {
   List<Todo> items = [];
   @override
   Widget build(BuildContext context) {
+
+    items = List.generate(10, (i) {
+      return Todo("Item $i", "Description $i", "Date");
+    });
+
     return Scaffold(
       appBar: AppBar(title: Text("Todo App")),
       body: _generateListView(),
@@ -47,21 +52,21 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (BuildContext contex, int index) {
         return Card(
             child: ListTile(
-          title: Text("Hello World"),
+          title: Text(items[index].itemName),
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (builder) => DetailPage(
-                      "ToDo Name",
-                      "ToDO Description", 
-                      "ToDO Date"
+                      items[index].itemName,
+                      items[index].itemDesc, 
+                      items[index].itemDate
                     )));
           },
         ));
       },
-      itemCount: 3,
+      itemCount: items.length,
       padding: EdgeInsets.all(8.0),
     );
   }
