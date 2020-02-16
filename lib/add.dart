@@ -30,6 +30,12 @@ class _AddPageState extends State<AddPage> {
               hintText: "Enter item date"
             ),
           ),
+          FlatButton(
+            onPressed: (){
+
+            }, 
+            child: Text("Save")
+          )
         ],)
       ),
       
