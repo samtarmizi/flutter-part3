@@ -30,16 +30,24 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Todo App")
       ),
-      body: Container(
-
-      ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (builder) => AddPage()));
-      },
-      child: Icon(Icons.add),
-      backgroundColor: Colors.red,
-      ),
+      body: _generateListView(),
+            floatingActionButton: FloatingActionButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (builder) => AddPage()));
+            },
+            child: Icon(Icons.add),
+            backgroundColor: Colors.red,
+            ),
+            
+          );
+        }
       
-    );
-  }
+        _generateListView() {
+          return ListView.builder(itemBuilder: (BuildContext contex, int index){
+            return Container(
+              child: Text("Hello Wrold")
+            ); 
+          },
+          itemCount: 3
+          );
+        }
 }
