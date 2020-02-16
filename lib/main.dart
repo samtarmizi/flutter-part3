@@ -28,9 +28,9 @@ class _HomePageState extends State<HomePage> {
   List<Todo> items = [];
   @override
   void initState() { 
-    // items = List.generate(10, (i) {
-    //   return Todo("Item $i", "Description $i", "22/2/2222");
-    // });
+    items = List.generate(10, (i) {
+      return Todo("Item $i", "Description $i", "22/2/2222");
+    });
     super.initState();
   }
   @override
@@ -72,10 +72,37 @@ class _HomePageState extends State<HomePage> {
                       items[index].itemDate
                     )));
           },
+          onLongPress:(){
+            _showAlertToDelete(index);
+          }
         ));
-      },
-      itemCount: items.length,
-      padding: EdgeInsets.all(8.0),
-    );
-  }
+                },
+                itemCount: items.length,
+                padding: EdgeInsets.all(8.0),
+              );
+            }
+          
+            _showAlertToDelete(int index) {
+              showDialog(context: context, builder: (BuildContext context){
+                return AlertDialog(
+                  title: Text("Are you sure"),
+                  actions: <Widget>[
+                    FlatButton(child: Text("Cancel"),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },),
+                    FlatButton(child: Text("OK!"),
+                    onPressed: (){
+                      //delete 
+                      setState(() {
+                        items.removeAt(index);
+                      });
+                      
+                      Navigator.pop(context);
+                    },)
+
+                  ],
+                );
+              });
+            }
 }
