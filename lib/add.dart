@@ -25,8 +25,9 @@ class _AddPageState extends State<AddPage> {
             ),
           ),
           TextField(
+            keyboardType: TextInputType.datetime,
             decoration: InputDecoration(
-              hintText: "Enter item place"
+              hintText: "Enter item date"
             ),
           ),
         ],)
