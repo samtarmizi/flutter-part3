@@ -47,7 +47,8 @@ class _HomePageState extends State<HomePage> {
               child: Text("Hello Wrold")
             ); 
           },
-          itemCount: 3
+          itemCount: 3,
+          padding: EdgeInsets.all(8.0),
           );
         }
 }
