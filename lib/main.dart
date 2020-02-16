@@ -27,15 +27,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Todo> items = [];
   @override
-  void initState() { 
+  void initState() {
     items = List.generate(10, (i) {
       return Todo("Item $i", "Description $i", "22/2/2222");
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: Text("Todo App")),
       body: _generateListView(),
@@ -43,10 +43,9 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           final Todo result = await Navigator.push(
               context, MaterialPageRoute(builder: (builder) => AddPage()));
-            setState(() {
-              items.add(result);
-            });
-          
+          setState(() {
+            items.add(result);
+          });
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.red,
@@ -59,50 +58,53 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (BuildContext contex, int index) {
         return Card(
             child: ListTile(
-          title: Text(items[index].itemName),
-          trailing: Icon(Icons.arrow_forward_ios),
-          subtitle: Text("Due at: ${items[index].itemDate}"),
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (builder) => DetailPage(
-                      items[index].itemName,
-                      items[index].itemDesc, 
-                      items[index].itemDate
-                    )));
-          },
-          onLongPress:(){
-            _showAlertToDelete(index);
-          }
-        ));
+                title: Text(items[index].itemName),
+                trailing: Icon(Icons.arrow_forward_ios),
+                subtitle: Text("Due at: ${items[index].itemDate}"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => DetailPage(
+                              items[index].itemName,
+                              items[index].itemDesc,
+                              items[index].itemDate)));
                 },
-                itemCount: items.length,
-                padding: EdgeInsets.all(8.0),
-              );
-            }
-          
-            _showAlertToDelete(int index) {
-              showDialog(context: context, builder: (BuildContext context){
-                return AlertDialog(
-                  title: Text("Are you sure"),
-                  actions: <Widget>[
-                    FlatButton(child: Text("Cancel"),
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },),
-                    FlatButton(child: Text("OK!"),
-                    onPressed: (){
-                      //delete 
-                      setState(() {
-                        items.removeAt(index);
-                      });
-                      
-                      Navigator.pop(context);
-                    },)
+                onLongPress: () {
+                  _showAlertToDelete(index);
+                }));
+      },
+      itemCount: items.length,
+      padding: EdgeInsets.all(8.0),
+    );
+  }
 
-                  ],
-                );
-              });
-            }
+  _showAlertToDelete(int index) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Are you sure"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Cancel"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                child: Text("OK!"),
+                onPressed: () {
+                  //delete
+                  setState(() {
+                    items.removeAt(index);
+                  });
+
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
+  }
 }

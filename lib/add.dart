@@ -54,10 +54,10 @@ class _AddPageState extends State<AddPage> {
           ),
           FlatButton(
               onPressed: () {
-                
                 print(
                     " Name ${namecontroller.text} Description ${descriptioncontroller.text} Date $dateSelected");
-                Todo newTodo = Todo(namecontroller.text, descriptioncontroller.text, dateSelected);
+                Todo newTodo = Todo(namecontroller.text,
+                    descriptioncontroller.text, dateSelected);
                 Navigator.pop(context, newTodo);
               },
               child: Text("Save"))

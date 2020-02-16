@@ -21,9 +21,13 @@ class _DetailPageState extends State<DetailPage> {
               child: Center(
                   child: Column(
         children: <Widget>[
-          Text('${widget.name}',style: TextStyle(fontSize: 32, color: Colors.grey[450])),
+          Text('${widget.name}',
+              style: TextStyle(fontSize: 32, color: Colors.grey[450])),
           SizedBox(height: 8),
-          Text('${widget.description}', style: TextStyle(fontSize: 15, color: Colors.grey[450]),),
+          Text(
+            '${widget.description}',
+            style: TextStyle(fontSize: 15, color: Colors.grey[450]),
+          ),
           SizedBox(height: 8),
           Text('${widget.date}')
         ],

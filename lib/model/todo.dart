@@ -1,4 +1,4 @@
-class Todo{
+class Todo {
   final String itemName;
   final String itemDesc;
   final String itemDate;
