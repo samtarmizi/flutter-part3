@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/add.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
 
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
-
+        Navigator.push(context, MaterialPageRoute(builder: (builder) => AddPage()));
       },
       child: Icon(Icons.add),
       backgroundColor: Colors.red,
