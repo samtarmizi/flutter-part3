@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     items = List.generate(10, (i) {
-      return Todo("Item $i", "Description $i", "Date");
+      return Todo("Item $i", "Description $i", "22/2/2222");
     });
 
     return Scaffold(
@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
             child: ListTile(
           title: Text(items[index].itemName),
           trailing: Icon(Icons.arrow_forward_ios),
+          subtitle: Text("Due at: ${items[index].itemDate}"),
           onTap: () {
             Navigator.push(
                 context,
