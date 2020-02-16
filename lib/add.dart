@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/model/todo.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -53,9 +54,11 @@ class _AddPageState extends State<AddPage> {
           ),
           FlatButton(
               onPressed: () {
-                //Navigator.pop(context);
+                
                 print(
                     " Name ${namecontroller.text} Description ${descriptioncontroller.text} Date $dateSelected");
+                Todo newTodo = Todo(namecontroller.text, descriptioncontroller.text, dateSelected);
+                Navigator.pop(context, newTodo);
               },
               child: Text("Save"))
         ],

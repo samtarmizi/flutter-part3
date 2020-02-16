@@ -27,19 +27,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Todo> items = [];
   @override
+  void initState() { 
+    // items = List.generate(10, (i) {
+    //   return Todo("Item $i", "Description $i", "22/2/2222");
+    // });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-
-    items = List.generate(10, (i) {
-      return Todo("Item $i", "Description $i", "22/2/2222");
-    });
 
     return Scaffold(
       appBar: AppBar(title: Text("Todo App")),
       body: _generateListView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final Todo result = await Navigator.push(
               context, MaterialPageRoute(builder: (builder) => AddPage()));
+            setState(() {
+              items.add(result);
+            });
+          
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.red,
